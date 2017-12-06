@@ -76,6 +76,7 @@ class DriverCommand
     const GET_ELEMENT_VALUE_OF_CSS_PROPERTY = 'getElementValueOfCssProperty';
     const ELEMENT_EQUALS = 'elementEquals';
     const SCREENSHOT = 'screenshot';
+    const ELEMENT_SCREENSHOT = 'elementScreenshot';
     // Alert API
     const ACCEPT_ALERT = 'acceptAlert';
     const DISMISS_ALERT = 'dismissAlert';
