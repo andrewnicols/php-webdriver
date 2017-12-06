@@ -128,7 +128,6 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
         ],
         DriverCommand::SUBMIT_ELEMENT => ['method' => 'POST', 'url' => '/session/:sessionId/element/:id/submit'],
         DriverCommand::SCREENSHOT => ['method' => 'GET', 'url' => '/session/:sessionId/screenshot'],
-        DriverCommand::ELEMENT_SCREENSHOT => ['method' => 'GET', 'url' => '/session/:sessionId/element/:id/screenshot'],
         DriverCommand::TOUCH_SINGLE_TAP => ['method' => 'POST', 'url' => '/session/:sessionId/touch/click'],
         DriverCommand::TOUCH_DOWN => ['method' => 'POST', 'url' => '/session/:sessionId/touch/down'],
         DriverCommand::TOUCH_DOUBLE_TAP => ['method' => 'POST', 'url' => '/session/:sessionId/touch/doubleclick'],
@@ -166,6 +165,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
         DriverCommand::SET_TIMEOUT => ['method' => 'POST', 'url' => '/session/:sessionId/timeouts'],
         DriverCommand::SET_WINDOW_SIZE => ['method' => 'POST', 'url' => '/session/:sessionId/window/rect'],
         DriverCommand::SET_WINDOW_POSITION => ['method' => 'POST', 'url' => '/session/:sessionId/window/rect'],
+        DriverCommand::TAKE_ELEMENT_SCREENSHOT => ['method' => 'GET', 'url' => '/session/:sessionId/element/:id/screenshot'],
     ];
     /**
      * @var string

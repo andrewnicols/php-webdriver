@@ -136,8 +136,9 @@ interface WebDriverElement extends WebDriverSearchContext
     /**
      * Take screenshot of a specific element.
      *
-     * @param string $save_as The path of the screenshot to be saved.
+     * @param string $saveAs The path of the screenshot to be saved.
+     *
      * @return string The screenshot in PNG format.
      */
-    public function takeElementScreenshot($save_as = null);
+    public function takeElementScreenshot($saveAs = null);
 }

@@ -469,33 +469,23 @@ class RemoteWebElement implements WebDriverElement, WebDriverLocatable
     }
 
     /**
-     * Return the WebDriverElement with $id
+     * Take a screenshot of a specific element.
      *
-     * @param string $id
+     * @param string $saveAs The path of the screenshot to be saved.
      *
-     * @return static
-     */
-    protected function newElement($id)
-    {
-        return new static($this->executor, $id, $this->isW3cCompliant);
-    }
-
-    /**
-     * Take screenshot of a specific element.
-     *
-     * @param string $save_as The path of the screenshot to be saved.
      * @return string The screenshot in PNG format.
      */
-    public function takeElementScreenshot($save_as = null)
+    public function takeElementScreenshot($saveAs = null)
     {
         $screenshot = base64_decode(
             $this->executor->execute(
-                DriverCommand::ELEMENT_SCREENSHOT,
+                DriverCommand::TAKE_ELEMENT_SCREENSHOT,
                 [':id' => $this->id]
             )
         );
-        if ($save_as) {
-            file_put_contents($save_as, $screenshot);
+
+        if ($saveAs) {
+            file_put_contents($saveAs, $screenshot);
         }
 
         return $screenshot;
