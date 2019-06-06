@@ -272,7 +272,7 @@ class RemoteWebElementTest extends WebDriverTestCase
      */
     public function testShouldCompareEqualsElement()
     {
-        if (getenv('GECKODRIVER') === '1') {
+        if ($this->driver->isW3cCompliant()) {
             $this->markTestSkipped('"equals" is not supported by the W3C specification');
         }
 
