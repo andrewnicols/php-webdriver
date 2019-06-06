@@ -32,7 +32,7 @@ matrix:
 
     # Add build to run tests against Chrome inside Travis environment
     - php: 7.2
-      env: BROWSER_NAME="chrome" CHROME_HEADLESS="1"
+      env: BROWSER_NAME="chrome" HEADLESS="1"
       addons:
         chrome: stable
 
@@ -42,7 +42,7 @@ matrix:
 
     # Chrome on Travis build with lowest possible dependencies
     - php: 7.2
-      env: BROWSER_NAME="chrome" CHROME_HEADLESS="1" DEPENDENCIES="--prefer-lowest"
+      env: BROWSER_NAME="chrome" HEADLESS="1" DEPENDENCIES="--prefer-lowest"
       addons:
         chrome: stable
 
