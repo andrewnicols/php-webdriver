@@ -27,7 +27,7 @@ class ChromeOptions
     /**
      * The key of chrome options in desired capabilities.
      */
-    const CAPABILITY = 'chromeOptions';
+    const CAPABILITY = 'goog:chromeOptions';
     /**
      * @var array
      */
@@ -44,6 +44,10 @@ class ChromeOptions
      * @var array
      */
     private $experimentalOptions = [];
+    /**
+     * @var bool
+     */
+    private $legacy = false;
 
     /**
      * Sets the path of the Chrome executable. The path should be either absolute
@@ -114,6 +118,14 @@ class ChromeOptions
     }
 
     /**
+     * @param bool $legacy
+     */
+    public function setLegacy($legacy)
+    {
+        $this->legacy = $legacy;
+    }
+
+    /**
      * @return DesiredCapabilities The DesiredCapabilities for Chrome with this options.
      */
     public function toCapabilities()
@@ -130,6 +142,7 @@ class ChromeOptions
     public function toArray()
     {
         $options = $this->experimentalOptions;
+        $options['w3c'] = !$this->legacy;
 
         // The selenium server expects a 'dictionary' instead of a 'list' when
         // reading the chrome option. However, an empty array in PHP will be
