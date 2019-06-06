@@ -78,7 +78,7 @@ class WebDriverActionsTest extends WebDriverTestCase
             ->perform();
 
         if ('1' === getenv('GECKODRIVER')) {
-            $logs = ['mouseover item-1', 'mousedown item-1', 'dragstart item-1'];
+            $logs = ['mouseover item-1', 'mousedown item-1', 'dragstart item-1', 'mouseup item-1', 'click item-1'];
         } else {
             $logs = ['mouseover item-1', 'mousedown item-1', 'mouseup item-1', 'click item-1'];
         }
