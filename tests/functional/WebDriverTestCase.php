@@ -60,6 +60,10 @@ class WebDriverTestCase extends TestCase
                     $chromeOptions->addArguments(['--headless']);
                 }
 
+                if ($binary = getenv('CHROME_PATH')) {
+                    $chromeOptions->setBinary($binary);
+                }
+
                 // --no-sandbox is a workaround for Chrome crashing: https://github.com/SeleniumHQ/selenium/issues/4961
                 $chromeOptions->addArguments(['--window-size=1024,768', '--no-sandbox']);
                 $this->desiredCapabilities->setCapability(ChromeOptions::CAPABILITY, $chromeOptions);
@@ -69,7 +73,7 @@ class WebDriverTestCase extends TestCase
                     $firefoxOptions->setHeadless(true);
                 }
 
-                if ($binary = getenv('FIREFOX_BINARY')) {
+                if ($binary = getenv('FIREFOX_PATH')) {
                     $firefoxOptions->setBinary($binary);
                 }
 
