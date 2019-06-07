@@ -170,7 +170,6 @@ class RemoteWebDriver implements WebDriver, JavaScriptExecutor, WebDriverHasInpu
      * @param string $session_id The existing session id
      * @param int|null $connection_timeout_in_ms Set timeout for the connect phase to remote Selenium WebDriver server
      * @param int|null $request_timeout_in_ms Set the maximum time of a request to remote Selenium WebDriver server
-     * @param bool $w3c_compliant false to use the legacy JsonWire protocol, true for the W3C WebDriver spec
      * @return static
      */
     public static function createBySessionID(

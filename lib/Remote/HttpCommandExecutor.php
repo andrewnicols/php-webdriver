@@ -177,7 +177,6 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
      * @param string $url
      * @param string|null $http_proxy
      * @param int|null $http_proxy_port
-     * @param bool $w3c_compliant
      */
     public function __construct($url, $http_proxy = null, $http_proxy_port = null)
     {
