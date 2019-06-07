@@ -68,6 +68,11 @@ class WebDriverTestCase extends TestCase
                 if (getenv('HEADLESS') === '1') {
                     $firefoxOptions->setHeadless(true);
                 }
+
+                if ($binary = getenv('FIREFOX_BINARY')) {
+                    $firefoxOptions->setBinary($binary);
+                }
+
                 $firefoxOptions->addArguments(['--window-size=1024,768']);
                 $this->desiredCapabilities->setCapability(FirefoxOptions::CAPABILITY, $firefoxOptions);
 
