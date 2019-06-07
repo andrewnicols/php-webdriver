@@ -49,7 +49,7 @@ class WebDriverActionsTest extends WebDriverTestCase
         $logs = ['mouseover item-1', 'mousedown item-1', 'mouseup item-1', 'click item-1'];
         $loggedEvents = $this->retrieveLoggedEvents();
 
-        if ('1' === getenv('GECKODRIVER')) {
+        if (WebDriverBrowserType::FIREFOX === getenv('BROWSER_NAME')) {
             $loggedEvents = array_slice($loggedEvents, 0, count($logs));
             // Firefox sometimes triggers some extra events
             // it's not related to Geckodriver, it's Firefox's own behavior
@@ -77,12 +77,15 @@ class WebDriverActionsTest extends WebDriverTestCase
             ->release()
             ->perform();
 
-        if ('1' === getenv('GECKODRIVER')) {
-            $logs = ['mouseover item-1', 'mousedown item-1', 'dragstart item-1', 'mouseup item-1', 'click item-1'];
-        } else {
-            $logs = ['mouseover item-1', 'mousedown item-1', 'mouseup item-1', 'click item-1'];
+        $logs = ['mouseover item-1', 'mousedown item-1', 'mouseup item-1', 'click item-1'];
+        $loggedEvents = $this->retrieveLoggedEvents();
+
+        if (WebDriverBrowserType::FIREFOX === getenv('BROWSER_NAME')) {
+            // Firefox sometimes triggers some extra events
+            // it's not related to Geckodriver, it's Firefox's own behavior
+            $loggedEvents = array_diff($loggedEvents, ['dragstart item-1']);
         }
-        $this->assertSame($logs, $this->retrieveLoggedEvents());
+        $this->assertSame($logs, $loggedEvents);
     }
 
     /**
