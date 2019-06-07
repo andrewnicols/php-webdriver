@@ -63,9 +63,7 @@ class WebDriverTestCase extends TestCase
                 // --no-sandbox is a workaround for Chrome crashing: https://github.com/SeleniumHQ/selenium/issues/4961
                 $chromeOptions->addArguments(['--window-size=1024,768', '--no-sandbox']);
                 $this->desiredCapabilities->setCapability(ChromeOptions::CAPABILITY, $chromeOptions);
-            } elseif (getenv('GECKODRIVER') === '1') {
-                $this->serverUrl = 'http://localhost:4444';
-
+            } elseif ($browserName === WebDriverBrowserType::FIREFOX) {
                 $firefoxOptions = new FirefoxOptions();
                 if (getenv('HEADLESS') === '1') {
                     $firefoxOptions->setHeadless(true);
