@@ -114,13 +114,10 @@ before_script:
     fi
   - if [ "$BROWSER_NAME" = "chrome" ]; then export CHROMEDRIVER_PATH=$PWD/chromedriver/chromedriver; fi
   - |
-    if [ "$GECKODRIVER" = "1" ]
-    then
-      mkdir geckodriver
-      wget -q -t 3 https://github.com/mozilla/geckodriver/releases/download/$GECKODRIVER_VERSION/geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz
-      tar xzf geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz -C geckodriver
-      export PATH="$PATH:`pwd`/geckodriver"
-    fi
+    mkdir geckodriver
+    wget -q -t 3 https://github.com/mozilla/geckodriver/releases/download/$GECKODRIVER_VERSION/geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz
+    tar xzf geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz -C geckodriver
+    export PATH="$PATH:`pwd`/geckodriver"
   - sh -e /etc/init.d/xvfb start
   - if [ ! -f jar/selenium-server-standalone-$SELENIUM_MAJOR_VERSION.$SELENIUM_MINOR_VERSION.jar ]; then wget -q -t 3 -P jar https://selenium-release.storage.googleapis.com/$SELENIUM_MAJOR_VERSION/selenium-server-standalone-$SELENIUM_MAJOR_VERSION.$SELENIUM_MINOR_VERSION.jar; fi
   - |
