@@ -13,8 +13,8 @@ env:
   global:
     - DISPLAY=:99.0
     - BROWSER_NAME="htmlunit"
-    - SELENIUM_MAJOR_VERSION="3.141"
-    - SELENIUM_MINOR_VERSION="59"
+    - SELENIUM_MAJOR_VERSION="3.8"
+    - SELENIUM_MINOR_VERSION="1"
     - GECKODRIVER_VERSION="v0.24.0"
 
 matrix:
