@@ -18,6 +18,7 @@ namespace Facebook\WebDriver\Remote;
 use Exception;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Firefox\FirefoxDriver;
+use Facebook\WebDriver\Firefox\FirefoxOptions;
 use Facebook\WebDriver\Firefox\FirefoxPreferences;
 use Facebook\WebDriver\Firefox\FirefoxProfile;
 use Facebook\WebDriver\WebDriverCapabilities;
@@ -165,6 +166,13 @@ class DesiredCapabilities implements WebDriverCapabilities
         ) {
             $this->capabilities[ChromeOptions::CAPABILITY] =
                 $this->capabilities[ChromeOptions::CAPABILITY]->toArray();
+        }
+
+        if (isset($this->capabilities[FirefoxOptions::CAPABILITY]) &&
+            $this->capabilities[FirefoxOptions::CAPABILITY] instanceof FirefoxOptions
+        ) {
+            $this->capabilities[FirefoxOptions::CAPABILITY] =
+                $this->capabilities[FirefoxOptions::CAPABILITY]->toArray();
         }
 
         if (isset($this->capabilities[FirefoxDriver::PROFILE]) &&
