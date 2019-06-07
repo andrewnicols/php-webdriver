@@ -23,8 +23,8 @@ namespace Facebook\WebDriver\Remote;
 class WebDriverCapabilityType
 {
     const BROWSER_NAME = 'browserName';
-    const VERSION = 'version';
-    const PLATFORM = 'platform';
+    const BROWSER_VERSION = 'browserVersion';
+    const PLATFORM_NAME = 'platformName';
     const JAVASCRIPT_ENABLED = 'javascriptEnabled';
     const TAKES_SCREENSHOT = 'takesScreenshot';
     const HANDLES_ALERTS = 'handlesAlerts';
@@ -38,6 +38,10 @@ class WebDriverCapabilityType
     const ACCEPT_SSL_CERTS = 'acceptSslCerts';
     const NATIVE_EVENTS = 'nativeEvents';
     const PROXY = 'proxy';
+
+    // Legacy JSONWire values.
+    const VERSION = 'version';
+    const PLATFORM = 'platform';
 
     private function __construct()
     {

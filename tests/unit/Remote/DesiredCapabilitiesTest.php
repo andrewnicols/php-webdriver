@@ -26,14 +26,27 @@ class DesiredCapabilitiesTest extends TestCase
     public function testShouldInstantiateWithCapabilitiesGivenInConstructor()
     {
         $capabilities = new DesiredCapabilities(
-            ['fooKey' => 'fooVal', WebDriverCapabilityType::PLATFORM => WebDriverPlatform::ANY]
+            ['fooKey' => 'fooVal', WebDriverCapabilityType::PLATFORM_NAME => WebDriverPlatform::ANY]
         );
 
         $this->assertSame('fooVal', $capabilities->getCapability('fooKey'));
         $this->assertSame('ANY', $capabilities->getPlatform());
 
+        // JSONWire.
         $this->assertSame(
-            ['fooKey' => 'fooVal', WebDriverCapabilityType::PLATFORM => WebDriverPlatform::ANY],
+            [
+                'fooKey' => 'fooVal',
+                WebDriverCapabilityType::PLATFORM => WebDriverPlatform::ANY,
+            ],
+            $capabilities->toArray(false)
+        );
+
+        // W3C.
+        $this->assertSame(
+            [
+                'fooKey' => 'fooVal',
+                WebDriverCapabilityType::PLATFORM_NAME => WebDriverPlatform::ANY,
+            ],
             $capabilities->toArray()
         );
     }

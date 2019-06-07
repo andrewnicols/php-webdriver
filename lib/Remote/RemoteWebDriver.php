@@ -126,19 +126,16 @@ class RemoteWebDriver implements WebDriver, JavaScriptExecutor, WebDriverHasInpu
             ],
         ];
 
-        // Legacy protocol
-        if (null !== $required_capabilities && $required_capabilities_array = $required_capabilities->toArray()) {
-            $parameters['capabilities']['alwaysMatch'] = $required_capabilities_array;
-        }
+        if (null !== $required_capabilities && $required_capabilities->hasAnyCapabilities()) {
+            $parameters['capabilities']['alwaysMatch'] = $required_capabilities->toArray();
 
-        if ($required_capabilities !== null) {
-            // TODO: Selenium (as of v3.0.1) does accept requiredCapabilities only as a property of desiredCapabilities.
+            // Selenium (as of v3.0.1) only accepts requiredCapabilities as a property of desiredCapabilities.
             // This has changed with the W3C WebDriver spec, but is the only way how to pass these
             // values with the legacy protocol.
-            $desired_capabilities->setCapability('requiredCapabilities', $required_capabilities->toArray());
+            $desired_capabilities->setCapability('requiredCapabilities', $required_capabilities->toArray(false));
         }
-
-        $parameters['desiredCapabilities'] = $desired_capabilities->toArray();
+        // Legacy capability handling.
+        $parameters['desiredCapabilities'] = $desired_capabilities->toArray(false);
 
         $command = new WebDriverCommand(
             null,

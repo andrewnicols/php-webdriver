@@ -44,12 +44,18 @@ class ChromeDriver extends RemoteWebDriver
 
     public function startSession(DesiredCapabilities $desired_capabilities)
     {
+        $desired_capabilities = self::castToDesiredCapabilitiesObject($desired_capabilities);
+
+        $parameters = [
+            'capabilities' => [
+                'firstMatch' => [$desired_capabilities->toArray()],
+            ],
+            'desiredCapabilities' => $desired_capabilities->toArray(false),
+        ];
         $command = new WebDriverCommand(
             null,
             DriverCommand::NEW_SESSION,
-            [
-                'desiredCapabilities' => $desired_capabilities->toArray(),
-            ]
+            $parameters
         );
         $response = $this->executor->execute($command);
         $this->sessionID = $response->getSessionID();
