@@ -159,6 +159,23 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
         DriverCommand::SET_ALERT_VALUE => ['method' => 'POST', 'url' => '/session/:sessionId/alert/text'],
         DriverCommand::SET_SCRIPT_TIMEOUT => ['method' => 'POST', 'url' => '/session/:sessionId/timeouts'],
         DriverCommand::SET_TIMEOUT => ['method' => 'POST', 'url' => '/session/:sessionId/timeouts'],
+        DriverCommand::GET_WINDOW_POSITION => [
+            'method' => 'GET',
+            'url' => '/session/:sessionId/window/rect',
+        ],
+        DriverCommand::GET_WINDOW_SIZE => ['method' => 'GET', 'url' => '/session/:sessionId/window/rect'],
+        DriverCommand::SET_WINDOW_POSITION => [
+            'method' => 'POST',
+            'url' => '/session/:sessionId/window/rect',
+        ],
+        DriverCommand::SET_WINDOW_SIZE => [
+            'method' => 'POST',
+            'url' => '/session/:sessionId/window/rect',
+        ],
+        DriverCommand::MAXIMIZE_WINDOW => [
+            'method' => 'POST',
+            'url' => '/session/:sessionId/window/maximize',
+        ],
     ];
     /**
      * @var string

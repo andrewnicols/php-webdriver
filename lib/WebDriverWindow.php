@@ -43,8 +43,7 @@ class WebDriverWindow
     public function getPosition()
     {
         $position = $this->executor->execute(
-            DriverCommand::GET_WINDOW_POSITION,
-            [':windowHandle' => 'current']
+            DriverCommand::GET_WINDOW_POSITION
         );
 
         return new WebDriverPoint(
@@ -62,8 +61,7 @@ class WebDriverWindow
     public function getSize()
     {
         $size = $this->executor->execute(
-            DriverCommand::GET_WINDOW_SIZE,
-            [':windowHandle' => 'current']
+            DriverCommand::GET_WINDOW_SIZE
         );
 
         return new WebDriverDimension(
@@ -80,8 +78,7 @@ class WebDriverWindow
     public function maximize()
     {
         $this->executor->execute(
-            DriverCommand::MAXIMIZE_WINDOW,
-            [':windowHandle' => 'current']
+            DriverCommand::MAXIMIZE_WINDOW
         );
 
         return $this;
@@ -99,7 +96,6 @@ class WebDriverWindow
         $params = [
             'width' => $size->getWidth(),
             'height' => $size->getHeight(),
-            ':windowHandle' => 'current',
         ];
         $this->executor->execute(DriverCommand::SET_WINDOW_SIZE, $params);
 
@@ -118,7 +114,6 @@ class WebDriverWindow
         $params = [
             'x' => $position->getX(),
             'y' => $position->getY(),
-            ':windowHandle' => 'current',
         ];
         $this->executor->execute(DriverCommand::SET_WINDOW_POSITION, $params);
 
