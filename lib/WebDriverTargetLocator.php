@@ -38,6 +38,13 @@ interface WebDriverTargetLocator
     public function frame($frame);
 
     /**
+     * Switch to the parent iframe.
+     *
+     * @return WebDriver The driver focused on the given frame.
+     */
+    //public function parent();
+
+    /**
      * Switch the focus to another window by its handle.
      *
      * @param string $handle The handle of the window to be focused on.
