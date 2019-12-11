@@ -48,6 +48,25 @@ class WebDriverWindowTest extends WebDriverTestCase
         $this->assertGreaterThanOrEqual($sizeBefore->getHeight(), $sizeAfter->getHeight());
     }
 
+    public function testShouldFullscreenWindow()
+    {
+        $sizeBefore = $this->driver->manage()
+            ->window()
+            ->getSize();
+
+        $this->driver->manage()
+            ->window()
+            ->fullscreen();
+
+        $sizeAfter = $this->driver->manage()
+            ->window()
+            ->getSize();
+
+        // Note: Headless browsers see no effect.
+        $this->assertGreaterThanOrEqual($sizeBefore->getWidth(), $sizeAfter->getWidth());
+        $this->assertGreaterThanOrEqual($sizeBefore->getHeight(), $sizeAfter->getHeight());
+    }
+
     /**
      * @group exclude-saucelabs
      */
