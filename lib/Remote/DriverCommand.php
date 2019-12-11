@@ -149,6 +149,7 @@ class DriverCommand
     // W3C specific
     const ACTIONS = 'actions';
     const GET_ELEMENT_PROPERTY = 'getElementProperty';
+    const MINIMIZE_WINDOW = 'minimizeWindow';
 
     private function __construct()
     {

@@ -28,10 +28,15 @@ class WebDriverWindow
      * @var ExecuteMethod
      */
     protected $executor;
+    /**
+     * @var bool
+     */
+    protected $isW3cCompliant;
 
-    public function __construct(ExecuteMethod $executor)
+    public function __construct(ExecuteMethod $executor, $isW3cCompliant = false)
     {
         $this->executor = $executor;
+        $this->isW3cCompliant = $isW3cCompliant;
     }
 
     /**
@@ -70,6 +75,20 @@ class WebDriverWindow
             $size['width'],
             $size['height']
         );
+    }
+
+    /**
+     * Minimizes the current window if it is not already maximized
+     *
+     * @return WebDriverWindow The instance.
+     */
+    public function minimize()
+    {
+        if ($this->isW3cCompliant) {
+            $this->executor->execute(DriverCommand::MINIMIZE_WINDOW, []);
+        }
+
+        return $this;
     }
 
     /**

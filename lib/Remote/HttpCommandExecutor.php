@@ -102,6 +102,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
             'method' => 'POST',
             'url' => '/session/:sessionId/window/:windowHandle/maximize',
         ],
+        DriverCommand::MINIMIZE_WINDOW => ['method' => 'POST', 'url' => '/session/:sessionId/window/minimize'],
         DriverCommand::MOUSE_DOWN => ['method' => 'POST', 'url' => '/session/:sessionId/buttondown'],
         DriverCommand::MOUSE_UP => ['method' => 'POST', 'url' => '/session/:sessionId/buttonup'],
         DriverCommand::CLICK => ['method' => 'POST', 'url' => '/session/:sessionId/click'],
